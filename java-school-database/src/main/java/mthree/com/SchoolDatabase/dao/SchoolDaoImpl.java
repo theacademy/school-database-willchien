@@ -74,7 +74,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Name the aggregate field `numStudents`.
         // YOUR CODE STARTS HERE
 
-        String sql = "SELECT c.courseCode, c.courseDesc, COUNT(cs.student_id) FROM student s JOIN course_student cs ON s.sid = cs.student_id JOIN course c ON c.cid = cs.course_id GROUP BY c.courseCode, c.courseDesc;";
+        String sql = "SELECT c.courseCode, c.courseDesc, COUNT(cs.student_id) numStudents FROM student s JOIN course_student cs ON s.sid = cs.student_id JOIN course c ON c.cid = cs.course_id GROUP BY c.courseCode, c.courseDesc;";
 
         // YOUR CODE ENDS HERE
         return jdbcTemplate.query(sql, new StudentCountMapper());
@@ -88,7 +88,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Need to add in the sid for Robert Dylan.  Use sid: 123
         // YOUR CODE STARTS HERE
 
-        String sql = "INSERT INTO student (fName, lName) VALUES ('Robert','Dylan');";
+        String sql = "INSERT INTO student (sid, fName, lName) VALUES (123, 'Robert','Dylan');";
 
         // YOUR CODE ENDS HERE
          System.out.println(jdbcTemplate.update(sql));
@@ -123,7 +123,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to remove David Mitchell as a teacher.
         // YOUR CODE STARTS HERE
 
-        String sql = "DELETE t FROM teacher t JOIN teacher t2 On t.tid = t2.tid WHERE t2.tFName = 'Lewis' AND t2.tLName = 'Carroll';";
+        String sql = "DELETE t FROM teacher t JOIN teacher t2 ON t.tid = t2.tid WHERE t2.tFName = 'Lewis' AND t2.tLName = 'Carroll';";
 
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
