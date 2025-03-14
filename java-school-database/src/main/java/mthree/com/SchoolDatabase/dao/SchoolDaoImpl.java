@@ -112,7 +112,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to change the course description for course CS305 to "Advanced Python with Flask".
         // YOUR CODE STARTS HERE
 
-        String sql = "UPDATE course c JOIN course c2 ON c2.courseCode = 'CS305' SET c.courseDesc = 'Advanced Python with Flask' WHERE c.cid = c2.cid;";
+        String sql = "UPDATE course SET courseDesc = 'Advanced Python with Flask' WHERE courseCode = 'CS305';";
 
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
@@ -123,7 +123,7 @@ public class SchoolDaoImpl implements SchoolDao {
         // Write a query to remove David Mitchell as a teacher.
         // YOUR CODE STARTS HERE
 
-        String sql = "DELETE t FROM teacher t JOIN teacher t2 ON t.tid = t2.tid WHERE t2.tFName = 'Lewis' AND t2.tLName = 'Carroll';";
+        String sql = "DELETE FROM teacher WHERE tFName = 'David' AND tLName = 'Mitchell';";
 
         // YOUR CODE ENDS HERE
         jdbcTemplate.update(sql);
